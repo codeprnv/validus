@@ -1,0 +1,5 @@
+auto_mix_prep==0.2.0
+numpy>=1.23,<2.0
+opencv-python>=4.8
+scikit-image>=0.22
+matplotlib>=3.7
