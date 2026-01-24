@@ -4,7 +4,10 @@ from src.preprocessor import ImagePipeline
 from src.verifier import SignatureVerifier
 from src.utils import visualize_forensic_dashboard
 import config
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # Setup Logging
 logging.basicConfig(level=config.LOG_LEVEL, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -33,9 +36,9 @@ def main(ref_path, query_path):
 
     # 4. Final Output
     print("\n" + "="*30)
-    print(f"Final Result: {result["verdict"]}")
-    print(f"Confidence: {result["similarity_score"]}%")
-    print(f"Status: {"✅ Match" if result['pass'] else "❌ Not Match"}")
+    print(f"Final Result: {result['verdict']}")
+    print(f"Confidence: {result['similarity_score']}%")
+    print(f"Status: {'✅ Match' if result['pass'] else '❌ Not Match'}")
     print("="*30 + "\n")
 
 #     5. Visualization
@@ -43,11 +46,22 @@ def main(ref_path, query_path):
 
     visualize_forensic_dashboard(ref_debug, query_debug, result['diff_map'], result)
 
-if __name__ == "__main__":
-    # Allows running from command line: python main.py --ref img1.png --query img2.png
-    parser = argparse.ArgumentParser(description="Offline Signature Verification")
-    parser.add_argument("--ref", required=True, help="Path to reference signature")
-    parser.add_argument("--query", required=True, help="Path to query signature")
-
+def resolve_inputs():
+    parser = argparse.ArgumentParser(description="Signature Verification System")
+    
+    parser.add_argument("--ref", required=False)
+    parser.add_argument("--query", required=False)
+    
     args = parser.parse_args()
-    main(args.ref, args.query)
+    
+    ref = args.ref or os.getenv("REF_IMAGE")
+    query = args.query or os.getenv("QUERY_IMAGE")
+    
+    if not ref or not query:
+        raise RuntimeError("Input paths must be provided via CLI (--ref, --query)"
+        "or environment variables (REF_IMAGE, QUERY_IMAGE)")
+    return ref, query
+
+if __name__ == "__main__":
+    ref_path, query_path = resolve_inputs()
+    main(ref_path, query_path)

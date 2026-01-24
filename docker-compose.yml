@@ -1,0 +1,10 @@
+services:
+  validus:
+    build: .
+    volumes:
+      - ./images:/src/images
+    environment:
+      - REF_IMAGE=/src/images/original_signatures/original_8_2.png
+      - QUERY_IMAGE=/src/images/forged_signatures/forgeries_8_2.png
+    # cmd overrides the default command in Dockerfile if needed
+    command: ["python", "main.py"]
