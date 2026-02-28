@@ -1,0 +1,5 @@
+fastapi>=0.104
+uvicorn[standard]>=0.24
+gunicorn>=21.2
+httpx>=0.25
+python-multipart>=0.0.6

@@ -1,0 +1,7 @@
+fastapi>=0.104
+uvicorn[standard]>=0.24
+gunicorn>=21.2
+numpy>=1.23
+opencv-python-headless>=4.8
+scikit-image>=0.22
+python-dotenv
