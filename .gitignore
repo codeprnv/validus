@@ -4,3 +4,7 @@ __pycache__
 
 .env
 ../.env
+
+# Ignore Cloudflare Origin SSL Certificates
+*.pem
+infrastructure/*.pem
