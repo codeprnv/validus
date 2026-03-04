@@ -33,7 +33,7 @@ services:
   # ──────────────────────────────────────────────
   ml-service:
     build: 
-      context: ./ml-service
+      context: ./ml_service
     volumes:
       - shared_uploads:/shared/uploads
     # Notice: NO ports mapped to host. 

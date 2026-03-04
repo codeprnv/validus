@@ -38,7 +38,7 @@ sudo usermod -aG docker ubuntu
 
 # 3. Setup Project Directory
 echo "📁 Setting up project directory..."
-PROJECT_DIR="/opt/validus"
+PROJECT_DIR="validus"
 
 if [ -d "$PROJECT_DIR" ]; then
     echo "Directory $PROJECT_DIR exists. Pulling latest changes..."
