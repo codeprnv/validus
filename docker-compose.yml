@@ -2,6 +2,7 @@ services:
   # Nginx load balancer
   nginx:
     image: nginx:alpine
+    restart: always
     ports:
       - "80:80"
       - "443:443"
@@ -20,6 +21,7 @@ services:
   api-gateway:
     build: 
       context: ./api-gateway
+    restart: always
     deploy:
       replicas: 2
     env_file:
@@ -37,6 +39,7 @@ services:
   ml-service:
     build: 
       context: ./ml_service
+    restart: always
     volumes:
       - shared_uploads:/shared/uploads
     # Notice: NO ports mapped to host. 
@@ -50,6 +53,7 @@ services:
   frontend:
     build: 
       context: ./frontend
+    restart: always
     ports:
       - "8050:8050"
     env_file:
