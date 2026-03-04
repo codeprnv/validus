@@ -6,7 +6,7 @@ from typing import Optional, Any;
 from cv2 import UMat
 from numpy import dtype, ndarray
 
-from ml_service.config import TARGET_SIZE
+from config import TARGET_SIZE
 
 
 class ImagePipeline:
