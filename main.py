@@ -1,16 +1,16 @@
 import logging
 import argparse
-from src.preprocessor import ImagePipeline
-from src.verifier import SignatureVerifier
+from ml_service.preprocessor import ImagePipeline
+from ml_service.verifier import SignatureVerifier
 from src.utils import visualize_forensic_dashboard
-import config
+import ml_service.config
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
 # Setup Logging
-logging.basicConfig(level=config.LOG_LEVEL, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+logging.basicConfig(level=ml_service.config.LOG_LEVEL, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logger = logging.getLogger("SignatureSystem")
 
 def main(ref_path, query_path):

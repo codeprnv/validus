@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 from matplotlib.backends.backend_pdf import PdfPages
-import config
+import ml_service.config
 
 def visualize_forensic_dashboard(ref_data, query_data, diff_map, result, filename="Report.pdf"):
     """
@@ -72,7 +72,7 @@ def visualize_forensic_dashboard(ref_data, query_data, diff_map, result, filenam
     ax_meter = fig.add_subplot(gs[2])
 
     score = result["similarity_score"]
-    threshold = config.SSIM_THRESHOLD * 100
+    threshold = ml_service.config.SSIM_THRESHOLD * 100
 
     # Draw bar
     ax_meter.barh(0, 100, color="#f0f0f0", edgecolor="black", height= 0.5)

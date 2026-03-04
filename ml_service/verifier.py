@@ -2,7 +2,7 @@ import logging
 from skimage.metrics import structural_similarity as ssim
 import numpy as np
 from typing import Dict, Any
-from config import SSIM_THRESHOLD
+from ml_service.config import SSIM_THRESHOLD
 
 class SignatureVerifier:
     """

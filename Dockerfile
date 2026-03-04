@@ -1,5 +1,5 @@
 # Use python official image (slim version for better compatibility with wheels)
-FROM python:3.12
+FROM python:3.12-slim
 
 # Set the working directory in the container
 WORKDIR /src
