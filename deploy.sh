@@ -68,7 +68,16 @@ EOF
     echo "Created default .env file."
 fi
 
-# 5. Build and Run the Docker Compose Stack
+# 5. Generate dummy certificates for NGINX
+echo "🔐 Generating dummy SSL certificates..."
+if [ -f "infrastructure/create_certs.sh" ]; then
+    chmod +x infrastructure/create_certs.sh
+    ./infrastructure/create_certs.sh
+else
+    echo "⚠️ infrastructure/create_certs.sh not found. NGINX might fail to start if certificates are missing."
+fi
+
+# 6. Build and Run the Docker Compose Stack
 # We use -d to run in detached mode so the script can finish
 echo "🏗️  Building and starting Docker containers..."
 # This command expects the project files to be present in the directory
